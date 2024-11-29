@@ -4,7 +4,8 @@
   - [Quelques commandes](#quelques-commandes)
     - [Pré-requis](#pré-requis)
   - [Define and build image](#define-and-build-image)
-  - [Jobs \& cronjobs](#jobs--cronjobs)
+  - [Jobs \& CronJobs](#jobs--cronjobs)
+    - [Pour s'exercer](#pour-sexercer)
     - [Pointeurs de docs utiles et autorisés le jour J](#pointeurs-de-docs-utiles-et-autorisés-le-jour-j)
 
 ## Quelques commandes
@@ -37,15 +38,24 @@
 >
 > `$> kubectl config set-context --curent --namespace=<ns>;`
 
-| Kind    | Spec                    | ?                                         |
-| ------- | ----------------------- | ----------------------------------------- |
-| Job     | completions             | Combien de pods on veut lancer            |
-| Job     | parallelism             | Combien de pods peuvent être lancés en // |
-| Job     | backoffLimit            | Combien de retry (exponentiel) max        |
-| CronJob | startingDeadlineSeconds | Deadline avant laquelle lancer le job     |
+| Kind    | Spec                    | ?                                                  |
+| ------- | ----------------------- | -------------------------------------------------- |
+| CronJob | concurrencyPolicy       | Allow x Forbid x Replace                           |
+| CronJob | startingDeadlineSeconds | Deadline avant laquelle lancer le job              |
+| Job     | activeDeadlineSeconds   | Terminate job if it still runnning after N seconds |
+| Job     | backoffLimit            | Combien de retry (exponentiel) max                 |
+| Job     | backoffLimit            | Stop attempting retries after N tries              |
+| Job     | completions             | Combien de pods on veut lancer                     |
+| Job     | parallelism             | Combien de pods peuvent être lancés en //          |
 
 > [!Warning]
 > Si startingDeadlineSeconds est inférieur à 10, le Cronjob risque de ne jamais démarrer, car le CronJobController vérifie toutes les 10 secondes si un nouveau job a été déclaré
+
+### Pour s'exercer
+
+> [!Tip]
+> Des exercices/Q&A dispo sur ce topic ici :
+> 🔗 <https://github.com/nigelpoulton/ckad/blob/main/1%20Application%20Design%20and%20Build/3%20Understand%20Jobs%20and%20CronJobs/answers.md>
 
 ### Pointeurs de docs utiles et autorisés le jour J
 
