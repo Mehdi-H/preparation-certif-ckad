@@ -35,3 +35,11 @@ simple-job:
 	kubectl delete job pi || true
 	kubectl apply -f jobs-and-cronjobs/simple_job.yaml
 	kubectl get jobs --watch
+
+.PHONY: clean-all  ## to clean up the minikube cluster pods, services, deployments, ...
+clean-all:
+	kubectl delete deployments --all
+	kubectl delete services --all
+	kubectl delete pods --all
+	kubectl delete daemonset --all
+

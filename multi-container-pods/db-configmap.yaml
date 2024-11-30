@@ -1,0 +1,16 @@
+# Source: https://github.com/nigelpoulton/ckad/blob/main/1%20Application%20Design%20and%20Build/4%20Understand%20Multi-container%20Pod%20Design%20Patterns/db-configmap.yml
+apiVersion: v1
+# Kind for kubernets ConfigMap
+kind: ConfigMap
+metadata:
+  # Name your ConfigMap
+  name: db-access
+  labels:
+    app: db
+data:
+  # User DB
+  POSTGRES_DB: postgres
+  # Db user
+  POSTGRES_USER: postgres
+  # Db password
+  POSTGRES_PASSWORD: testPassword

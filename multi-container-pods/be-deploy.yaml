@@ -1,0 +1,38 @@
+# Source: https://github.com/nigelpoulton/ckad/blob/main/1%20Application%20Design%20and%20Build/4%20Understand%20Multi-container%20Pod%20Design%20Patterns/be-deploy.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: store-backend
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      initContainers:
+      - name: checkdb
+        image: postgres:9.6.5
+        command: ['sh', '-c', 'until pg_isready -h postgres -p 5432; do echo waiting for database; sleep 2; done;']
+      containers:
+        - name: backend
+          env:
+            - name: DATABASE_URL
+              value: "postgresql://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@postgres:5432/$(POSTGRES_DB)"
+          image: pluralsight_backend:latest
+          imagePullPolicy: Never # only for local testing
+          readinessProbe:
+            httpGet:
+              path: /api/v1/
+              port: api
+          livenessProbe:
+            httpGet:
+              path: /api/v1/
+              port: api
+          ports:
+            - name: api
+              containerPort: 8000
