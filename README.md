@@ -3,12 +3,20 @@
 - [Préparation certif' CKAD](#préparation-certif-ckad)
   - [Quelques commandes](#quelques-commandes)
     - [Pré-requis](#pré-requis)
-  - [Ressources pour me former](#ressources-pour-me-former)
+  - [Ressources pour se former](#ressources-pour-se-former)
+  - [Des commandes utiles en vrac ❗️](#des-commandes-utiles-en-vrac-️)
     - [Pointeurs de doc autorisés pendant la certif'](#pointeurs-de-doc-autorisés-pendant-la-certif)
   - [Define and build image](#define-and-build-image)
   - [Jobs \& CronJobs](#jobs--cronjobs)
     - [Pour s'exercer](#pour-sexercer)
   - [Multi-container pods](#multi-container-pods)
+    - [Ambassador pattern](#ambassador-pattern)
+      - [Use case](#use-case)
+    - [Adapter pattern](#adapter-pattern)
+      - [Use case : transformation vers un puits de logs](#use-case--transformation-vers-un-puits-de-logs)
+    - [Init pattern](#init-pattern)
+    - [Autres pointeurs](#autres-pointeurs)
+  - [Utilise persistent \& ephemeral volumes](#utilise-persistent--ephemeral-volumes)
 
 ## Quelques commandes
 
@@ -22,9 +30,25 @@
 - ⚙️ make (>v4)
 - 🧊 [charmbracelet/freeze](https://github.com/charmbracelet/freeze)
 
-## Ressources pour me former
+## Ressources pour se former
 
 - Cours Pluralsight [Certified Kubernetes Application Developer: Application Design and Build](https://app.pluralsight.com/library/courses/ckad-services-networking-cert/table-of-contents) de [Nigel Poulton](https://www.nigelpoulton.com/)
+- Pages officielles du CNCF sur le contenu de l'examen :
+  - ℹ️ A propos : <https://www.cncf.io/training/certification/ckad/>
+  - 📖 Certificate handbook : <https://docs.linuxfoundation.org/tc-docs/certification/lf-handbook2>
+  - 💡 Exam tips : <https://docs.linuxfoundation.org/tc-docs/certification/tips-cka-and-ckad>
+  - ❓ FAQ : <https://docs.linuxfoundation.org/tc-docs/certification/faq-cka-ckad-cks>
+  - 🎲 Cheatsheet : <https://kubernetes.io/docs/reference/kubectl/quick-reference/>
+
+## Des commandes utiles en vrac ❗️
+
+| Use case                                       | Commandes                                                                           |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Pour se connecter à un namespace               | `$> kubectl config set-context --current --namespace=<insert-namespace-name-here>;` |
+| Pour voir les logs d'un pod                    | `$> kubectl logs <pod-id>;`                                                         |
+| Si pas ou pas assez de logs                    | `$> kubectl describe pod <pod-id>`                                                  |
+| Editer un pod pour lequel on n'a pas de config | `$> kubectl get pod <pod-name> -o yaml > pod-definition.yaml`                       |
+| Editer un pod                                  | `$> kubectl edit pod <pod-name>`                                                    |
 
 ### Pointeurs de doc autorisés pendant la certif'
 
@@ -189,3 +213,33 @@ graph TD
 ### Autres pointeurs
 
 - Ambassador : <https://learncloudnative.com/blog/2020-10-03-ambassador-pattern>
+
+## Utilise persistent & ephemeral volumes
+
+On manipule 3 abstractions principalement ici :
+
+| Abstraction                 | Rappel                                                                                |
+| --------------------------- | ------------------------------------------------------------------------------------- |
+| EphemeralVolume             | Pour de la donnée temporaire, du cache, ...                                           |
+| PersistentVolume (PV)       | Pour créer un volumen persistent, pour de la data qu'on ne veut pas perdre            |
+| PersistentVolumeClaim (PVC) |                                                                                       |
+| StorageClass (SC)           | Définition d'une classe de stockage utilisable dans un cluster, référencée par un PVC |
+
+```mermaid
+graph TD
+    subgraph "Storage"
+        Store[(Storage)]
+    end
+    
+    subgraph "K8s Cluster"
+        subgraph "Pod"
+            PVC["PVC"]
+            PV["PV"]
+            SC["SC"]
+        end
+    end
+    
+    Store -.-> PV
+    PV -.-> PVC
+    SC -.-> PVC
+```
