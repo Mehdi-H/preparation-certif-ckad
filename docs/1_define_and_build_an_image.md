@@ -20,14 +20,13 @@
 | ------- | ----------------------- | -------------------------------------------------- |
 | Job     | parallelism             | Combien de pods peuvent être lancés en //          |
 | Job     | completions             | Combien de pods on veut lancer                     |
-| Job     | backoffLimit            | Stop attempting retries after N tries              |
 | Job     | backoffLimit            | Combien de retry (exponentiel) max                 |
 | Job     | activeDeadlineSeconds   | Terminate job if it still runnning after N seconds |
 | CronJob | startingDeadlineSeconds | Deadline avant laquelle lancer le job              |
 | CronJob | concurrencyPolicy       | Allow x Forbid x Replace                           |
 
 > [!Warning]
-> Si startingDeadlineSeconds est inférieur à 10, le Cronjob risque de ne jamais démarrer, car le CronJobController vérifie toutes les 10 secondes si un nouveau job a été déclaré
+> Si `startingDeadlineSeconds` est inférieur à 10, le Cronjob risque de ne jamais démarrer, car le CronJobController vérifie toutes les 10 secondes si un nouveau job a été déclaré
 
 ### Pour s'exercer
 
