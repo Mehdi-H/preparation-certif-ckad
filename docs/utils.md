@@ -1,5 +1,11 @@
 # 🎆 Divers
 
+- [🎆 Divers](#-divers)
+  - [Ressources pour se former](#ressources-pour-se-former)
+  - [Des commandes utiles en vrac ❗️](#des-commandes-utiles-en-vrac-️)
+    - [Pointeurs de doc autorisés pendant la certif'](#pointeurs-de-doc-autorisés-pendant-la-certif)
+
+
 ## Ressources pour se former
 
 - Cours Pluralsight [Certified Kubernetes Application Developer: Application Design and Build](https://app.pluralsight.com/library/courses/ckad-services-networking-cert/table-of-contents) 

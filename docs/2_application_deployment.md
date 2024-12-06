@@ -1,5 +1,11 @@
 # Application Deployment
 
+- [Application Deployment](#application-deployment)
+  - [Primitives k8s pour déployer](#primitives-k8s-pour-déployer)
+  - [🔵🟢 Blue/Green deployment](#-bluegreen-deployment)
+  - [🚀🐥 Canary deployment](#-canary-deployment)
+
+
 > [!NOTE]
 > Focus sur 
 > * 🚀🚀 les `deployment`, 
@@ -72,9 +78,9 @@ style GreenApp fill:#7F7,color:black
 
 💡 Un exemple de setup blue/green/public `service` pour faire du blue/green deployment [est dispo ici, sur le repo de npoulton](https://github.com/nigelpoulton/ckad/tree/main/2%20Application%20Deployment/2%20Use%20Kubernetes%20Primitives%20to%20Implement%20Common%20Deployment%20Strategies/Blue-Green)
 
-🖼️ Y a ce schéma aussi qui est pas mal pour illustrer : ([crédits Anvesh Muppeda sur Medium](https://medium.com/@muppedaanvesh/blue-green-deployment-in-kubernetes-76f9153e0805)) :
+🖼️ Il y a ce schéma aussi qui est pas mal pour illustrer : ([crédits Anvesh Muppeda sur Medium](https://medium.com/@muppedaanvesh/blue-green-deployment-in-kubernetes-76f9153e0805)) :
 
-![](https://miro.medium.com/v2/resize:fit:1400/1*oaQ2RlHX1ov6IXV0BSkqRg.gif)
+![](https://miro.medium.com/v2/resize:fit:1400/1*oaQ2RlHX1ov6IXV0BSkqRg.gif ':size=500x250')
 
 ## 🚀🐥 Canary deployment
 
@@ -105,3 +111,13 @@ Démarche :
 
 1. on vérifie que la nouvelle release fonctionne bien en production avec le minimum de trafic nécessaire pour la valider
 2. si c'est good, la canary release devient la nouvelle *stable release* et absorbe tout le trafic
+
+<style>
+ .mermaid {
+    text-align: center;
+ }
+ img {
+    display: block;
+    margin: auto;
+ }
+</style>

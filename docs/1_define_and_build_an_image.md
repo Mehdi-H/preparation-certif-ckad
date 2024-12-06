@@ -1,5 +1,18 @@
 # Define and build image
 
+- [Define and build image](#define-and-build-image)
+  - [Jobs \& CronJobs](#jobs--cronjobs)
+    - [Pour s'exercer](#pour-sexercer)
+  - [Multi-container pods](#multi-container-pods)
+    - [Ambassador pattern](#ambassador-pattern)
+      - [Use case](#use-case)
+    - [Adapter pattern](#adapter-pattern)
+      - [Use case : transformation vers un puits de logs](#use-case--transformation-vers-un-puits-de-logs)
+    - [Init pattern](#init-pattern)
+    - [Autres pointeurs](#autres-pointeurs)
+  - [Utilise persistent \& ephemeral volumes](#utilise-persistent--ephemeral-volumes)
+
+
 - Pour save une image : `$> docker save ckad:docker --output ckad.tar`
 - Pour save & compresser une image : `$> docker save ckad:docker | gzip > image .tar.gz`
 - Créer une image à partir d'une image trifouillée : `$> docker commit <container> <new_image>`
@@ -154,14 +167,14 @@ graph TD
 
 - Ambassador : <https://learncloudnative.com/blog/2020-10-03-ambassador-pattern>
 
-## Utilise persistent & ephemeral volumes
+## Utilize persistent & ephemeral volumes
 
 On manipule 3 abstractions principalement ici :
 
 | Abstraction                 | Rappel                                                                                |
 | --------------------------- | ------------------------------------------------------------------------------------- |
 | EphemeralVolume             | Pour de la donnée temporaire, du cache, ...                                           |
-| PersistentVolume (PV)       | Pour créer un volumen persistent, pour de la data qu'on ne veut pas perdre            |
+| PersistentVolume (PV)       | Pour créer un volume persistent, pour de la data qu'on ne veut pas perdre            |
 | PersistentVolumeClaim (PVC) |                                                                                       |
 | StorageClass (SC)           | Définition d'une classe de stockage utilisable dans un cluster, référencée par un PVC |
 
