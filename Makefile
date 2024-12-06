@@ -43,3 +43,6 @@ clean-all:
 	kubectl delete pods --all
 	kubectl delete daemonset --all
 
+.PHONY: docs-server  ## 🐸 to render the docsify doc locally
+docs-server:
+	docsify serve ./docs 

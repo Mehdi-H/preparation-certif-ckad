@@ -1,63 +1,4 @@
-# Préparation certif' CKAD
-
-- [Préparation certif' CKAD](#préparation-certif-ckad)
-  - [Quelques commandes](#quelques-commandes)
-    - [Pré-requis](#pré-requis)
-  - [Ressources pour se former](#ressources-pour-se-former)
-  - [Des commandes utiles en vrac ❗️](#des-commandes-utiles-en-vrac-️)
-    - [Pointeurs de doc autorisés pendant la certif'](#pointeurs-de-doc-autorisés-pendant-la-certif)
-  - [Define and build image](#define-and-build-image)
-  - [Jobs \& CronJobs](#jobs--cronjobs)
-    - [Pour s'exercer](#pour-sexercer)
-  - [Multi-container pods](#multi-container-pods)
-    - [Ambassador pattern](#ambassador-pattern)
-      - [Use case](#use-case)
-    - [Adapter pattern](#adapter-pattern)
-      - [Use case : transformation vers un puits de logs](#use-case--transformation-vers-un-puits-de-logs)
-    - [Init pattern](#init-pattern)
-    - [Autres pointeurs](#autres-pointeurs)
-  - [Utilise persistent \& ephemeral volumes](#utilise-persistent--ephemeral-volumes)
-
-## Quelques commandes
-
-![Availble commands](docs/available-commands.png)
-
-### Pré-requis
-
-- 🥏 [Kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/)
-- 🚐 [Minikube](https://kubernetes.io/fr/docs/tasks/tools/install-minikube/)
-- 🐳 Docker ou [Colima](https://github.com/abiosoft/colima)
-- ⚙️ make (>v4)
-- 🧊 [charmbracelet/freeze](https://github.com/charmbracelet/freeze)
-
-## Ressources pour se former
-
-- Cours Pluralsight [Certified Kubernetes Application Developer: Application Design and Build](https://app.pluralsight.com/library/courses/ckad-services-networking-cert/table-of-contents) de [Nigel Poulton](https://www.nigelpoulton.com/)
-- Pages officielles du CNCF sur le contenu de l'examen :
-  - ℹ️ A propos : <https://www.cncf.io/training/certification/ckad/>
-  - 📖 Certificate handbook : <https://docs.linuxfoundation.org/tc-docs/certification/lf-handbook2>
-  - 💡 Exam tips : <https://docs.linuxfoundation.org/tc-docs/certification/tips-cka-and-ckad>
-  - ❓ FAQ : <https://docs.linuxfoundation.org/tc-docs/certification/faq-cka-ckad-cks>
-  - 🎲 Cheatsheet : <https://kubernetes.io/docs/reference/kubectl/quick-reference/>
-
-## Des commandes utiles en vrac ❗️
-
-| Use case                                       | Commandes                                                                           |
-| ---------------------------------------------- | ----------------------------------------------------------------------------------- |
-| Pour se connecter à un namespace               | `$> kubectl config set-context --current --namespace=<insert-namespace-name-here>;` |
-| Pour voir les logs d'un pod                    | `$> kubectl logs <pod-id>;`                                                         |
-| Si pas ou pas assez de logs                    | `$> kubectl describe pod <pod-id>`                                                  |
-| Editer un pod pour lequel on n'a pas de config | `$> kubectl get pod <pod-name> -o yaml > pod-definition.yaml`                       |
-| Editer un pod                                  | `$> kubectl edit pod <pod-name>`                                                    |
-
-### Pointeurs de doc autorisés pendant la certif'
-
-- <https://kubernetes.io/docs/concepts/workloads/controllers/job/>
-- <https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/job-v1/>
-- <https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/>
-- <https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/cron-job-v1/>
-
-## Define and build image
+# Define and build image
 
 - Pour save une image : `$> docker save ckad:docker --output ckad.tar`
 - Pour save & compresser une image : `$> docker save ckad:docker | gzip > image .tar.gz`
@@ -68,7 +9,7 @@
 > [!TIP]
 > Pour aller + loin : <https://github.com/nigelpoulton/ckad>
 
-### Jobs & CronJobs
+## Jobs & CronJobs
 
 >[!Warning]
 > Il peut arriver qu'on nous demande de se positionner dans un namespace précis pour faire des actions, mais sans nous dire comment faire :
