@@ -4,8 +4,8 @@
   - [Quelques commandes](#quelques-commandes)
     - [Pré-requis pour builder en local](#pré-requis-pour-builder-en-local)
 
-> [!TIP] Lien Github-Pages
-> 🔗 <https://mehdi-h.github.io/preparation-certif-ckad/#/README>
+> [!TIP]
+> 🔗 Lien Github Pages : <https://mehdi-h.github.io/preparation-certif-ckad/#/README>
 
 ## Pré-requis pour builder en local
 
