@@ -2,11 +2,7 @@
 
 # Préparation Certification CKAD ☸️🐳☸️
 
-> A magical documentation site generator.
-
-- Simple and lightweight
-- No statically built html files
-- Multiple themes
+> Ma prise de notes quand je me suis préparé à passer la CKAD
 
 [GitHub](https://github.com/Mehdi-H/preparation-certif-ckad)
 [Démarrer](/README)
