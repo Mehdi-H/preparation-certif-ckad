@@ -25,7 +25,7 @@
 
 ## Commandes disponibles
 
-> [!INFO]
+> [!NOTE]
 > `Github Pages` est configuré sur ce repo pour publier automatiquement le contenu du dossier [docs](./docs/) de la branche `main`
 
 ![](./docs/available-commands.png)
