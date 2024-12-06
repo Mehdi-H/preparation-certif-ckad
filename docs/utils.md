@@ -2,7 +2,13 @@
 
 ## Ressources pour se former
 
-- Cours Pluralsight [Certified Kubernetes Application Developer: Application Design and Build](https://app.pluralsight.com/library/courses/ckad-services-networking-cert/table-of-contents) de [Nigel Poulton](https://www.nigelpoulton.com/)
+- Cours Pluralsight [Certified Kubernetes Application Developer: Application Design and Build](https://app.pluralsight.com/library/courses/ckad-services-networking-cert/table-of-contents) 
+  - de [Nigel Poulton](https://www.nigelpoulton.com/)
+  - et [Dan Wahlin](https://www.linkedin.com/in/danwahlin/)
+- Cours Udemy [Kubernetes Certified Application Developer (CKAD) with Tests](https://www.udemy.com/course/certified-kubernetes-application-developer/)
+  - de [Mumshad Mannambeth](https://www.linkedin.com/in/mmumshad/)
+  - cours recommandé par le CNCF
+  - vient avec un accès à des labs interactif en ligne sur la plateforme [KodeKloud](https://kodekloud.com/)
 - Pages officielles du CNCF sur le contenu de l'examen :
   - ℹ️ A propos : <https://www.cncf.io/training/certification/ckad/>
   - 📖 Certificate handbook : <https://docs.linuxfoundation.org/tc-docs/certification/lf-handbook2>
