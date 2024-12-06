@@ -46,17 +46,18 @@ style Container fill:#77F
 ```mermaid
 ---
 config:
+  layout: elk
   look: handDrawn
   theme: dark
   mainBkg: #f4f4f4
 ---
 graph TD
     subgraph "User Testing"
-        User1[("User 1")] --> BlueTest["Blue Test Service"]
-        User2[("User 2")] --> GreenTest["Green Test Service"]
+        User1[("User 1")] --> BlueTest["Blue Test <br>Service"]
+        User2[("User 2")] --> GreenTest["Green Test <br>Service"]
         
-        BlueTest --> BlueApp["Blue App"]
-        GreenTest --> GreenApp["Green App"]
+        BlueTest --> BlueApp["Blue App <br>deployment"]
+        GreenTest --> GreenApp["Green App <br>deployment"]
     end
 style BlueTest fill:orange,color:black
 style GreenTest fill:orange,color:black
@@ -74,3 +75,33 @@ style GreenApp fill:#7F7,color:black
 🖼️ Y a ce schéma aussi qui est pas mal pour illustrer : ([crédits Anvesh Muppeda sur Medium](https://medium.com/@muppedaanvesh/blue-green-deployment-in-kubernetes-76f9153e0805)) :
 
 ![](https://miro.medium.com/v2/resize:fit:1400/1*oaQ2RlHX1ov6IXV0BSkqRg.gif)
+
+## 🚀🐥 Canary deployment
+
+> [!INFO]
+> *Canary deployment strategy involves deploying new versions of applications next to stable production versions to see how the canary version compares against the baseline before promoting or rejecting the deployment*  -- [*Microsoft*](https://learn.microsoft.com/en-us/azure/devops/pipelines/ecosystems/kubernetes/canary-demo?view=azure-devops&tabs=yaml#:~:text=A%20canary%20deployment%20strategy%20deploys,or%20reject%20the%20canary%20deployment.)
+
+```mermaid
+---
+config:
+  layout: elk
+  look: handDrawn
+  theme: dark
+  mainBkg: #f4f4f4
+---
+graph TD
+    subgraph "🚀🐥 Canary Deployment"
+        Users["N Users"] --> Service["Service"]
+        
+        Service --95%--> BlueApp["Blue App"]
+        Service --5%--> CanaryApp["Canary App"]
+    end
+style Service fill:orange,color:black
+style BlueApp fill:#77F
+style CanaryApp fill:yellow,color:black
+```
+
+Démarche :
+
+1. on vérifie que la nouvelle release fonctionne bien en production avec le minimum de trafic nécessaire pour la valider
+2. si c'est good, la canary release devient la nouvelle *stable release* et absorbe tout le trafic
